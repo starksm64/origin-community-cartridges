@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+OpenShift Origin, except where otherwise noted, is released under the
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+See the LICENSE file located in each component directory.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>openshift.jbossas.waratek</groupId>
+    <artifactId>vcadmin</artifactId>
+    <version>0.0.1</version>
+    <name>Waratek VCAdmin</name>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>cloudvm.management</groupId>
+            <artifactId>management</artifactId>
+            <version>2.1.5-RC-1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/management-2.1.5-RC-1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.30</version>
+        </dependency>
+    </dependencies>
+</project>
