@@ -1,7 +1,0 @@
-#!/bin/bash -e
-
-if [ "$OPENSHIFT_APP_UUID" = "$OPENSHIFT_GEAR_UUID" ]; then
-	${OPENSHIFT_CAMELVERTX_DIR}/bin/control_camel $1
-else
-	${OPENSHIFT_CAMELVERTX_DIR}/bin/control_vertx $1
-fi

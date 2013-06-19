@@ -6,7 +6,7 @@ Display-Name: Tomcat 8
 Description: "Apache Tomcat is an open source software implementation of the Java Servlet and JavaServer Pages technologies."
 Version: '8.0'
 License: ASL 2.0
-Vendor:  jboss.com
+Vendor:  apache
 Categories:
   - service
   - java
