@@ -49,9 +49,9 @@ function ishttpup() {
     let count=0
     while [ ${count} -lt 24 ]
     do
-        echo "Checking for ${OPENSHIFT_JBOSSAS_WARATEK_IP}:${OPENSHIFT_JBOSSAS_HTTP_PORT} listening port"
-        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_JBOSSAS_WARATEK_IP}:${OPENSHIFT_JBOSSAS_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
-            echo "Found ${OPENSHIFT_JBOSSAS_WARATEK_IP}:${OPENSHIFT_JBOSSAS_HTTP_PORT} listening port"
+        echo "Checking for ${OPENSHIFT_JBOSSAS_WARATEK_IP}:${OPENSHIFT_JBOSSAS_WARATEK_HTTP_PORT} listening port"
+        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_JBOSSAS_WARATEK_IP}:${OPENSHIFT_JBOSSAS_WARATEK_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
+            echo "Found ${OPENSHIFT_JBOSSAS_WARATEK_IP}:${OPENSHIFT_JBOSSAS_WARATEK_HTTP_PORT} listening port"
             return 0
         fi
         let count=${count}+1

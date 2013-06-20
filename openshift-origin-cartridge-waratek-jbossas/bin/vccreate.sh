@@ -1,5 +1,8 @@
 #!/bin/bash -x
 
+# A tools script that creates the waratek jvc for the jbossas application
+# this uses the jmx interface to the waratek cloud-jvm global service
+
 WARATEK_TOOLS_HOME=/usr/lib/jvm/java-waratek/tools/
 uuid=$OPENSHIFT_GEAR_UUID
 
@@ -13,7 +16,15 @@ env
 cartridge_type="jbossas-waratek"
 CART_DIR=$OPENSHIFT_HOMEDIR/$cartridge_type
 
-source /usr/libexec/openshift/cartridges/abstract/info/lib/util
+function print_sed_exp_replace_env_var {
+  sed_exp=""
+  for openshift_var in $(env | grep OPENSHIFT_ | awk -F '=' '{print $1}')
+  do
+    variable_val=$(echo "${!openshift_var}" | sed -e "s@\/@\\\\/@g")
+    sed_exp="${sed_exp} -e s/\${env.${openshift_var}}/${variable_val}/g"
+  done
+  printf "%s\n" "$sed_exp"
+}
 
 
 # Create a link for each file in user config to server standalone/config
@@ -99,6 +110,7 @@ else
 fi
 
 sed_replace_env=$(print_sed_exp_replace_env_var)
+
 sed -i -e "s/\${mysql.enabled}/$MYSQL_ENABLED/g" \
        -e "s/\${postgresql.enabled}/$POSTGRESQL_ENABLED/g" \
        -e "s/\${messaging.thread.pool.max.size}/$messaging_thread_pool_max_size/g" \
