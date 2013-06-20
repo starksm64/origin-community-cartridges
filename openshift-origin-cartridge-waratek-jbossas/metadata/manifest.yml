@@ -124,6 +124,9 @@ Endpoints:
     Private-Port-Name: REMOTING_PORT
     Private-Port:      4447
     Public-Port-Name:  REMOTING_PROXY_PORT
+  - Private-IP-Name:   IP
+    Private-Port-Name: JPDA_PORT
+    Private-Port:      8787
 Additional-Control-Actions:
     - threaddump
 Install-Build-Required: false
