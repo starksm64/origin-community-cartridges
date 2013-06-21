@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+exec 1> /var/lib/javad/tmp/vccreate.log
+
 # A tools script that creates the waratek jvc for the jbossas application
 # this uses the jmx interface to the waratek cloud-jvm global service
 

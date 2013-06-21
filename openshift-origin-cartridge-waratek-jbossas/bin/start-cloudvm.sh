@@ -17,7 +17,7 @@ export INSTALL_PREFIX=""
 export WARATEK_HOME="${INSTALL_PREFIX}/usr/lib/jvm/java-waratek/jre"
 export WARATEK_OWNER="jboss"
 export DEFAULT_JVM_NAME="cloud-jvm"
-export WARATEK_OPTS="-noverify -Xdaemon -Xmx6144m"
+export WARATEK_OPTS="-noverify -Xdaemon -Xmx5144m"
 JMX_PORT=6002
 # The JMX/HTTP REST flag
 JMX_HTTP="-Dcom.waratek.jmxhttp.jolokia"
@@ -25,6 +25,11 @@ JMX_HTTP="-Dcom.waratek.jmxhttp.jolokia"
 JMX_RMI="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=${JMX_PORT} -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 # Which JMX access to use
 JMX_OPTS="${JMX_HTTP} ${JMX_RMI}"
+# JIRSH opts
+JIRSH="-Dcom.waratek.ssh.ip=127.0.0.1"
+JIRSH="${JIRSH} -Dcom.waratek.ssh.port=2222"
+JIRSH="${JIRSH} -Dcom.waratek.ssh.server=on"
+
 
 SERVICE=$WARATEK_HOME/bin/javad
 
@@ -59,7 +64,7 @@ start)
               mkdir -p $VARLIB_PATH/$DEFAULT_JVM_NAME/
                 echo "PIDFILE=${PIDFILE}"
 		mcs_level="s0:c0,c497"
-		CMD="runcon -u system_u -r system_r -t initrc_t -l $mcs_level $SERVICE $WARATEK_OPTS ${JMX_OPTS} -Dcom.waratek.jvm.name=${JVM_NAME}"
+		CMD="runcon -u system_u -r system_r -t initrc_t -l $mcs_level $SERVICE $WARATEK_OPTS ${JMX_OPTS} -Dcom.waratek.jvm.name=${JVM_NAME} ${JIRSH}"
               if [[ $(id -u) -eq 0 ]]; then
                 echo "This script runs as root. $WARATEK_OWNER will own the JVM process"
         	echo `date` > /var/lib/javad/nohup-${JVM_NAME}.out
@@ -139,4 +144,5 @@ list)
         echo "Usage: $0 {start|stop|restart|status}"
         exit 1
 esac
+
 
