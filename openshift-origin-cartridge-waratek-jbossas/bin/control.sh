@@ -4,7 +4,7 @@ exec 1> /var/lib/javad/tmp/config.log
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-WARATEK_TOOLS_HOME=/usr/lib/jvm/java-waratek/tools/
+WARATEK_TOOLS_HOME=${OPENSHIFT_JBOSSAS_WARATEK_DIR}/bin
 VCADMIN="/etc/alternatives/jre/bin/java -jar ${WARATEK_TOOLS_HOME}/vcadmin.jar"
 
 cartridge_type="jbossas-waratek"

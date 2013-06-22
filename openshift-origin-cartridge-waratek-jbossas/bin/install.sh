@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+# Called to install the
+
 case "$1" in
   -v|--version)
     version="$2"
