@@ -22,6 +22,11 @@ See the LICENSE file located in each component directory.
             <configuration>
                 <outputDirectory>${project.basedir}/bin</outputDirectory>
                 <finalName>vcadmin</finalName>
+                <archive>
+                  <manifest>
+                    <mainClass>mgmt.jmx.VCAdmin</mainClass>
+                  </manifest>
+                </archive>
             </configuration>
           </plugin>
         </plugins>
