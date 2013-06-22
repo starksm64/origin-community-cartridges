@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ../lib/management-2.1.5-RC-1.jar
+Main-Class: mgmt.jmx.VCAdmin
+
