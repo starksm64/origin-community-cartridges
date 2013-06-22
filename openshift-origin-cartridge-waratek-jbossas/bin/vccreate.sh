@@ -5,8 +5,11 @@ exec 1> /var/lib/javad/tmp/vccreate.log
 # A tools script that creates the waratek jvc for the jbossas application
 # this uses the jmx interface to the waratek cloud-jvm global service
 
-WARATEK_TOOLS_HOME=${OPENSHIFT_JBOSSAS_WARATEK_DIR}/bin
 uuid=$OPENSHIFT_GEAR_UUID
+if [ -z $OPENSHIFT_JBOSSAS_WARATEK_DIR ]; then
+    OPENSHIFT_JBOSSAS_WARATEK_DIR=/var/lib/openshift/${uuid}/jbossas-waratek
+fi
+WARATEK_TOOLS_HOME=${OPENSHIFT_JBOSSAS_WARATEK_DIR}/bin
 
 # Import Environment Variables
 #for f in /var/lib/openshift/${uuid}/.env/*
